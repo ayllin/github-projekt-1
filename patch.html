@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <input type="text" placeholder="name" id="name" value="Zafer Ayan"/>
+   <button onclick="edegistir()">Degistir</button>
+    <script>
+        function degistir() {
+            const name = document.getElementById("name").value;
+            const id = "2225";
+            fetch("http://localhost:3000/students/" + id, { 
+                method:"PATCH",
+                headers:{
+                "Content-Type": "application/json",
+                },
+             body: JSON.stringify({name: name}),
+
+            })
+             .then((res) => res.json())
+             .then((json) => alert("Güncellendi"));
+        }
+
+       
+    </script>
+</body>
+</html>
